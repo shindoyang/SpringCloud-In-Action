@@ -21,14 +21,14 @@ spring:
           predicates:
             - Path=/hello/rateLimit/**
           filters:
-            #filterÃû³Æ±ØĞëÊÇRequestRateLimiter
+            #filteråç§°å¿…é¡»æ˜¯RequestRateLimiter
             - name: RequestRateLimiter
               args:
-                #Ê¹ÓÃSpEL°´Ãû³ÆÒıÓÃbean
+                #ä½¿ç”¨SpELæŒ‰åç§°å¼•ç”¨bean
                 key-resolver: "#{@addressResolver}"
-                #ÔÊĞíÓÃ»§Ã¿Ãë´¦Àí¶àÉÙ¸öÇëÇó
+                #å…è®¸ç”¨æˆ·æ¯ç§’å¤„ç†å¤šå°‘ä¸ªè¯·æ±‚
                 redis-rate-limiter.replenishRate: 1
-                #ÁîÅÆÍ°µÄÈİÁ¿£¬ÔÊĞíÔÚÒ»ÃëÖÓÄÚÍê³ÉµÄ×î´óÇëÇóÊı
+                #ä»¤ç‰Œæ¡¶çš„å®¹é‡ï¼Œå…è®¸åœ¨ä¸€ç§’é’Ÿå†…å®Œæˆçš„æœ€å¤§è¯·æ±‚æ•°
                 redis-rate-limiter.burstCapacity: 5
       discovery:
         locator:
