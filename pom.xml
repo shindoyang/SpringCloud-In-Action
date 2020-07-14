@@ -20,6 +20,10 @@
 
     <modules>
         <module>gateway-limiter</module>
+        <module>kafka</module>
+        <module>rabbitmq</module>
+        <module>redis5</module>
+        <module>rocketmq</module>
     </modules>
 
     <dependencies>
