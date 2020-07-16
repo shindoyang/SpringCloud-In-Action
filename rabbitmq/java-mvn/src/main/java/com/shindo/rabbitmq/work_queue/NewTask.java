@@ -27,6 +27,10 @@ public class NewTask {
         //消息持久化
         boolean durable = true;
         channel.queueDeclare(TASK_QUEUE_NAME,durable,false,false,null);
+        /*
+        channel.queueDeclare(队列名称，是否持久化，独占的queue，不使用时是否自动删除，其他参数)
+         */
+
         String message = "netWork 16 message..";
         //消息持久化改造:basicProperties = MessageProperties.PERSISTENT_TEXT_PLAIN
         channel.basicPublish("", TASK_QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
