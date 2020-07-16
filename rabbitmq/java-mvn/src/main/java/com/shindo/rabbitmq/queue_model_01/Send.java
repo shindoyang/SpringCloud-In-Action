@@ -1,4 +1,4 @@
-package com.shindo.rabbitmq.queue_model;
+package com.shindo.rabbitmq.queue_model_01;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
