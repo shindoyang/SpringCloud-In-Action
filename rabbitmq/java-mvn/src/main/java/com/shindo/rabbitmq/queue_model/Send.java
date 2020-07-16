@@ -5,11 +5,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 /**
- * @Author: 杨耿
- * @Description:
- * @Date: Create in 2020/7/15
- * @Modified By:
- * @Modified Date:
+ * 队列模式
  */
 public class Send {
     private final static String QUEUE_NAME = "hello";
