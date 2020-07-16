@@ -19,6 +19,8 @@ public class EmitLog {
     public static void main(String[] args)throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("123.57.131.180");
+        factory.setUsername("root");
+        factory.setPassword("123456");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.exchangeDeclare(EXCHANGE_NAME,"fanout");
