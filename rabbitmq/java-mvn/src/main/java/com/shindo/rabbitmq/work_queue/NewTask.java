@@ -23,7 +23,7 @@ public class NewTask {
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-        String message = "netWork four message....";
+        String message = "netWork 16 message..";
         channel.basicPublish("", "hello",null, message.getBytes());
         System.out.println(" [x] Send " + message + "'");
     }

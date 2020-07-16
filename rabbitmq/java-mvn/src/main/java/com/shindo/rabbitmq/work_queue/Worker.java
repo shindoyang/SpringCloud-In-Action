@@ -30,12 +30,22 @@ public class Worker {
             System.out.println(" [x] Received '" + message + "'");
             try {
                 doWork(message);
-            } catch (Exception e) {
-                System.out.println(" [x] Done");
+            } catch (Exception e){
+                e.printStackTrace();
+            }finally  {
+                //开启ack，需要每次完成业务后发送ack通知broker，这样broker才会真正认为消息被消费掉
+                System.out.println(" [x]业务处理完成，开始发送ack");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+                System.out.println("ack发送完毕");
             }
         };
 
-        boolean autoAck = true;
+        boolean autoAck = false;
         channel.basicConsume(TASK_QUEUE_NAME, autoAck, deliverCallback, consumerTag->{});
 
     }
