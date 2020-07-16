@@ -12,7 +12,7 @@ import com.rabbitmq.client.ConnectionFactory;
  * @Modified Date:
  */
 public class NewTask {
-    private final static String QUEUE_NAME="hello";
+    private final static String TASK_QUEUE_NAME="task_queue";
 
     public static void main(String[] args)throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
@@ -22,9 +22,9 @@ public class NewTask {
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
+        channel.queueDeclare(TASK_QUEUE_NAME,false,false,false,null);
         String message = "netWork 16 message..";
-        channel.basicPublish("", "hello",null, message.getBytes());
+        channel.basicPublish("", TASK_QUEUE_NAME,null, message.getBytes());
         System.out.println(" [x] Send " + message + "'");
     }
 }

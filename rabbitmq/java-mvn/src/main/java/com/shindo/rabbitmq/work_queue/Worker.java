@@ -13,7 +13,7 @@ import com.rabbitmq.client.DeliverCallback;
  * @Modified Date:
  */
 public class Worker {
-    private final static String TASK_QUEUE_NAME = "hello";
+    private final static String TASK_QUEUE_NAME = "task_queue";
 
     public static void main(String[] args)throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
