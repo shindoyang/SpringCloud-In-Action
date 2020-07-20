@@ -6,7 +6,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 /**
- * 路由模式
+ * 路由模式  direct  有选择的接受指定队列
  * <p>
  * 在发布/订阅模式上在进一步，队列只接受某发布的某类型消息。routing.png图以log exchange为例，不同的队列接收不同的log级别。这就是路由模式。 我们将重点学习
  * exchange模式为direct时，队列不仅与exchange关联，还与具体的routing_key绑定。
