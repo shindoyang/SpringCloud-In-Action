@@ -6,7 +6,9 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
 
 /**
- * 竞争消费模式 competing consumer pattern RabbitMQ server会以轮询的机制，将消息均匀地发送到各个client， 即便某个client的处理能力强，很快回复了Basic.ACK，仍如还是按round-robin的方式，依次发送，
+ * 竞争消费模式 competing consumer pattern
+ * <p>
+ * RabbitMQ server会以轮询的机制，将消息均匀地发送到各个client， 即便某个client的处理能力强，很快回复了Basic.ACK，仍如还是按round-robin的方式，依次发送，
  * 因为server并不是等待Basic.ACK后，才发生，而是收到message后，就根据round-robin的轮询方式发送， 在收到Basic.ACK后，将消息从队列中删除。如果我们很明确知道某个client的处理能力很强，
  * 可以利用 channel.basicQos(2); ，每次分发两个消息给它，相当于weight=2。
  */
