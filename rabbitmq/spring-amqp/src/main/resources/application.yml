@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: usage_message
+  rabbitmq:
+    host: 123.57.131.180
+    username: root
+    password: 123456
+
+logging:
+  level:
+    org: ERROR
+
+tutorial:
+  client:
+    duration: 100000
