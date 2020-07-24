@@ -20,12 +20,14 @@ public class Tut3Sender {
 	@Scheduled(fixedDelay = 1000, initialDelay = 500)
 	public void send() {
 		StringBuilder builder = new StringBuilder("Hello");
+		//getAndIncrement()是先返回再加1
 		if (dots.getAndIncrement() == 3) {
 			dots.set(1);
 		}
 		for (int i = 0; i < dots.get(); i++) {
 			builder.append('.');
 		}
+		//incrementAndGet()是先加1再返回
 		builder.append(count.incrementAndGet());
 		String message = builder.toString();
 		template.convertAndSend(fanout.getName(), "", message);
