@@ -6,6 +6,7 @@ import com.rabbitmq.client.ConnectionFactory;
 
 /**
  * 主题模式
+ * 是路由模式的升级，配置路由键可以使用 * # 进行模糊匹配，其中# 可以代表零个或多个单词，* 仅代表一个单词
  */
 public class EmitLogTopic {
 	private static final String EXCHANGE_NAME = "topic_logs";
