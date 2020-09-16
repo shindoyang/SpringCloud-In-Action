@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8080
+zuul:
+  add-host-header: true
+  sensitive-headers:
+  routes:
+    eurekaA:
+      path: /eurekB/**
+      serviceId: eurekaclient

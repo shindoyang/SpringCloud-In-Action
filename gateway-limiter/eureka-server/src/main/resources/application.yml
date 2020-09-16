@@ -10,8 +10,8 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
-logging:
-  level:
-    root: debug #root 表示整个项目，当然也可以设置为某个包下，也可以具体到某个类名(日志级别的值不区分大小写)
+#logging:
+#  level:
+#    root: debug #root 表示整个项目，当然也可以设置为某个包下，也可以具体到某个类名(日志级别的值不区分大小写)
 
 

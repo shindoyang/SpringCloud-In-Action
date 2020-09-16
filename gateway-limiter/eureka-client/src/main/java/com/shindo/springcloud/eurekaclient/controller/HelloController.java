@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello")
 public class HelloController {
 
-    @RequestMapping("/rateLimit")
-    public String hello() {
-        return "hello, spring cloud Gateway";
-    }
+	@RequestMapping("/rateLimit")
+	public String hello() {
+		System.out.println("come in client");
+		return "hello, spring cloud Gateway";
+	}
 }
