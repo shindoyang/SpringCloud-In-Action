@@ -2,7 +2,6 @@ package com.shindo.zuul;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
@@ -59,12 +58,16 @@ public class ApiAuthFilter extends ZuulFilter {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 		String url = request.getRequestURI(); // 列子 [/user/login/loginWx]
-		String[] split = url.split("/", 3);    // 这里切割一下,好让下面判断是否是需要修改url的.
+		//粗暴替换
+		//需添加前置判断条件
+		request.setAttribute("requestURI", "/hello/rateLimit");
+		ctx.setRequest(request);
 
+		//精准替换
+		/*String[] split = url.split("/", 3);    // 这里切割一下,好让下面判断是否是需要修改url的.
 		for (int i = 0; i < split.length; i++) {
 			System.out.println(i + "-----------" + split[i]);
 		}
-
 		if (split.length >= 2) {
 			String val = urlMap.get(split[1]);
 			if (StringUtils.isNotEmpty(val)) {
@@ -74,7 +77,7 @@ public class ApiAuthFilter extends ZuulFilter {
 				request.setAttribute("requestURI", url);
 				ctx.setRequest(request);
 			}
-		}
+		}*/
 		return null;
 	}
 
