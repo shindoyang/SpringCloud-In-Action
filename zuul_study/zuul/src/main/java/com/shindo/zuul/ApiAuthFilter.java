@@ -12,6 +12,11 @@ import java.util.Map;
 
 /**
  * 测试网关api鉴权
+ * 在zuul里面，服务间的路由是yml中的route-->serviceId指定的
+ * 在Filter中的处理更多的是针对URI，即接口地址的转发。
+ * 换句话说：
+ * yml配置处理了请求路径到指定服务的路由，
+ * Filter可以处理请求接口间的跳转。
  */
 @Component
 public class ApiAuthFilter extends ZuulFilter {
@@ -42,7 +47,7 @@ public class ApiAuthFilter extends ZuulFilter {
 	private static Map<String, String> urlMap = new HashMap<>();
 
 	static {
-		urlMap.put("eurekB", "/eurekA/");
+		urlMap.put("eurekB", "");
 	}
 
 	/**
@@ -55,9 +60,11 @@ public class ApiAuthFilter extends ZuulFilter {
 		HttpServletRequest request = ctx.getRequest();
 		String url = request.getRequestURI(); // 列子 [/user/login/loginWx]
 		String[] split = url.split("/", 3);    // 这里切割一下,好让下面判断是否是需要修改url的.
+
 		for (int i = 0; i < split.length; i++) {
 			System.out.println(i + "-----------" + split[i]);
 		}
+
 		if (split.length >= 2) {
 			String val = urlMap.get(split[1]);
 			if (StringUtils.isNotEmpty(val)) {
