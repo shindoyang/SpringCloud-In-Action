@@ -80,6 +80,12 @@ public class ApiAuthFilter extends ZuulFilter {
 				ctx.setRequest(request);
 			}
 		}*/
+
+		//在连贯逻辑中，如果某一步出现异常，需要终止转发，响应前端异常信息，可以采用下面的方法：
+		/*ctx.setSendZuulResponse(false);
+		ctx.setResponseStatusCode(409);
+		ctx.setResponseBody("测试终止服务！");
+		ctx.getResponse().setContentType("text/html;charset=utf-8");*/
 		return null;
 	}
 
