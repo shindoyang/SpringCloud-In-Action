@@ -60,9 +60,11 @@ public class ApiAuthFilter extends ZuulFilter {
 		String url = request.getRequestURI(); // 列子 [/user/login/loginWx]
 		//粗暴替换
 		//需添加前置判断条件
-		request.setAttribute("requestURI", "/hello/rateLimit");
-		ctx.setRequest(request);
-
+//		request.setAttribute("appKey", "shindo");
+//		ctx.setRequest(request);
+		ctx.addZuulRequestHeader("appKey", "shindo");
+		//注意，上面的方法无法实现路由转发，但是可以在request中新增参数，只有下面这个方法可以
+		ctx.put(FilterConstants.REQUEST_URI_KEY, "/hello/rateLimit");
 		//精准替换
 		/*String[] split = url.split("/", 3);    // 这里切割一下,好让下面判断是否是需要修改url的.
 		for (int i = 0; i < split.length; i++) {
